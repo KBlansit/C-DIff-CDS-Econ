@@ -29,31 +29,5 @@ parameters<- list(
 set.seed(2038)
 # main function
 
-
-
-negative <- function(parameters){
-  # case when false negative
-  if(runif(1, min=0, max=1) >= parameters$pFalseNegative) {
-    # base cost
-    cBaseCost <- parameters$cBaseCostCDiffTx
-    
-    # false negative inflator 
-    cNegativeInflator <- rtriangle(1,
-      parameters$cFalseNegativeInflatorMin,
-      parameters$cFalseNegativeInflatorMax,
-      parameters$cFalseNegativeInflatorMode
-    )
-    
-    # sum up
-    totalCost <- cBaseCost + cNegativeInflator
-  }
-  # case when true negative
-  else{
-    # base cost
-    totalCost <- parameters$cTrueNegative
-  }
-  return(totalCost)
-}
-
 # example code
 replicate(5, negative(parameters))
