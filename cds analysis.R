@@ -1,33 +1,18 @@
+# load libraries ####
 
-# parameters####
-# set parameters to hash
-parameters<- list(
-  # cost parameters
-    
-  cBaseCostCDiffTx = 4000,
-  
-  cFalsePositiveInflatorMin = -1500,
-  cFalsePositiveInflatorMode = -100,
-  cFalsePositiveInflatorMax = -500,
-  
-  cFalseNegativeInflatorMin = -500,
-  cFalseNegativeInflatorMode = 250,
-  cFalseNegativeInflatorMax = 1000,
-  
-  cTrueNegative = 0,
-  
-  # test results
-  pPositiveResult = 0.4,
-  
-  pFalsePositiveNoCDS = 0.4,
-  pFalsePositiveYesCDS = 0.4,
-  
-  pFalseNegative = 0.5
-  
+# load local R files
+source("functions.R")
+source("parameters.R")
+
+# main function ####
+
+# set seed
+set.seed(2038)
+
+reps <- 10
+lapply(
+   c("NO_CDS", "CDS"),
+   replicate(reps, decisionCDSImpliment(parameters, x)),
+   parameters = parameters
 )
 
-set.seed(2038)
-# main function
-
-# example code
-replicate(5, negative(parameters))

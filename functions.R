@@ -1,4 +1,8 @@
-positiveTest <- function(parameters, state){
+# load libraries ####
+require(triangle)
+
+# functions ####
+positiveTest <- function(state, parameters){
   # determine which probability to use
   
   # use for no CDS case
@@ -27,7 +31,7 @@ positiveTest <- function(parameters, state){
   # case when true negative
   else{
     # base cost
-    totalCost <- parameters$cTruePositive
+    totalCost <- parameters$cBaseCostCDiffTx
   }
   return(totalCost)
 }
@@ -54,4 +58,27 @@ negativeTest <- function(parameters){
     totalCost <- parameters$cTrueNegative
   }
   return(totalCost)
+}
+
+cDiffTest <- function(state, parameters){
+  if(runif(1, min=0, max=1) >= parameters$pPositiveResult){
+    result <- positiveTest(state, parameters) + parameters$cTestCost
+  }
+  else{
+    result <- negativeTest(parameters) + parameters$cTestCost
+  }
+  
+  return(result)
+}
+
+decisionCDSImpliment <- function(state, parameters){
+  # use for no CDS case
+  if(state == "NO_CDS"){
+    result <- 0
+  # use for CDS case
+  } else if(state == "CDS"){
+    result <- parameters$cBPAImpliment
+  }
+  result <- result + cDiffTest(state, parameters)
+  return(result)
 }
