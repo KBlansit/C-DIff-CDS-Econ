@@ -1,6 +1,7 @@
 # load libraries ####
 require(dplyr)
 require(tidyr)
+require(tibble)
 require(magrittr)
 
 # load custom libraries ####
@@ -84,6 +85,8 @@ oneWaySensitivityAnalysis <- function(var_name, parameters, d_range, reps) {
 }
 
 summarizeSensitivityResults <- function(df, reps) {
+  # returns delta delta
+  
   # transform to wide
   long_df <- gather(df, CDS, cost, NO_CDS, CDS)
   
@@ -96,6 +99,36 @@ summarizeSensitivityResults <- function(df, reps) {
   
   wide_df$av_diff = (wide_df$CDS - wide_df$NO_CDS)/reps
   
+  # return range of values
+  diff_df <- wide_df %>% filter(value %in% range(value)) %>% select(av_diff)
+  delta <- diff(diff_df$av_diff)
   
+  return(delta)
+}
+
+autoRunSensitivity <- function(var_names, d_range, parameters, reps) {
+  # wrapper function
   
+  # run one way sensitivity for chance vars
+  sensitivities <- lapply(
+    var_names,
+    oneWaySensitivityAnalysis,
+    parameters = parameters,
+    d_range = d_range,
+    reps = reps
+  )
+
+  # return to list
+  lst_summary <- lapply(sensitivities, summarizeSensitivityResults, reps=reps)
+  names(lst_summary) <- var_names
+  
+  # convert to df
+  df <- as.data.frame(t(as.data.frame(lst_summary)))
+  
+  # extract var names
+  df$var <- rownames(df) 
+  rownames(df) <- NULL
+  names(df) <- c("diff", "var")
+  
+  return(df)
 }

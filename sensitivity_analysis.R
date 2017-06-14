@@ -13,7 +13,7 @@ set.seed(82765)
 parameters <- yaml.load_file("parameters.yaml")
 
 # initialize simulation parameters
-reps <- 999
+reps <- 99
 
 # one way sensitivity for chance values
 prob_names = c(
@@ -25,16 +25,18 @@ prob_names = c(
 
 prob_range <- seq(0., 1., by = 0.1)
 
-# run one way sensitivity for chance vars
-prob_results <- lapply(
-  prob_names,
-  oneWaySensitivityAnalysis,
-  parameters = parameters,
-  d_range = prob_range,
-  reps = reps
+autoRunSensitivity(prob_names, prob_range, parameters, reps)
+
+cost_names = c(
+  "cBaseCostCDiffTx",
+  "cFalsePositiveInf",
+  "cFalseNegativeInf",
+  "cTrueNegative",
+  "cTestCost",
+  "cBPAImpliment"
 )
 
+cost_range <- seq(0, 10000, by = 1000)
 
-#oneWaySensitivityAnalysis("ctruenegative", parameters, seq(0, 10000, by=1000), 99)
+autoRunSensitivity(cost_names, cost_range, parameters, reps)
 
-#dollar_names
