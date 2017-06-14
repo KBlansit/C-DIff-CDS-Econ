@@ -1,7 +1,8 @@
 # load libraries ####
 
 # load local R files
-source("functions.R")
+source("src/functions.R")
+source("src/one_way_sensitivity.R")
 
 # load parameters
 parameters <- yaml.load_file("parameters.yaml")
@@ -24,3 +25,4 @@ replicate(10, decisionCDSImpliment(parameters, "NO_CDS"))
 replicate(10, decisionCDSImpliment(parameters, "CDS"))
 
 # test primary wrapper
+oneWaySensitivityAnalysis("cTrueNegative", parameters, seq(0, 10000, by=1000), 999)

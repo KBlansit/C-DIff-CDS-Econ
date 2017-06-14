@@ -1,7 +1,7 @@
 # load libraries ####
 
 # load local R files
-source("functions.R")
+source("src/functions.R")
 
 # main function ####
 
