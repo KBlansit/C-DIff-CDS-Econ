@@ -2,9 +2,9 @@
 
 # load local R files
 source("functions.R")
-source("parameters.R")
 
 # example code
+yaml.load_file("parameters.yaml")->parameters
 
 # test negativeTest
 replicate(5, negativeTest(parameters))

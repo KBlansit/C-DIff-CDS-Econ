@@ -1,0 +1,43 @@
+cBaseCostCDiffTx:
+    distribution: "point"
+    point: 4000
+
+cFalsePositiveInf:
+    distribution: "triangle"
+    min: -1500
+    mode: -500
+    max: -100
+
+cFalseNegativeInf:
+    distribution: "triangle"
+    min: -500
+    mode: -250
+    max: 1000
+
+cTrueNegative:
+    distribution: "point"
+    point: 0
+
+pPositiveResult:
+    distribution: "point"
+    point: 0.4
+
+pFalsePositiveNoCDS:
+    distribution: "point"
+    point: 0.4
+
+pFalsePositiveYesCDS:
+    distribution: "point"
+    point: 0.4
+
+pFalseNegative:
+    distribution: "point"
+    point: 0.5
+
+cTestCost:
+    distribution: "point"
+    point: 400
+
+cBPAImpliment:
+    distribution: "point"
+    point: 6000
