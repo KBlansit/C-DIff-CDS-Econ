@@ -1,3 +1,8 @@
+# load libraries ####
+require(dplyr)
+require(tidyr)
+require(magrittr)
+
 # load custom libraries ####
 source('src/functions.R')
 
@@ -76,4 +81,21 @@ oneWaySensitivityAnalysis <- function(var_name, parameters, d_range, reps) {
   df <- do.call(rbind, sensitive_rslt)
   
   return(df)
+}
+
+summarizeSensitivityResults <- function(df, reps) {
+  # transform to wide
+  long_df <- gather(df, CDS, cost, NO_CDS, CDS)
+  
+  # add by group
+  median_df <- long_df %>%
+    group_by(CDS, value) %>%
+    summarise(sum= sum(cost))
+  
+  wide_df <- spread(median_df, CDS, sum)
+  
+  wide_df$av_diff = (wide_df$CDS - wide_df$NO_CDS)/reps
+  
+  
+  
 }

@@ -24,5 +24,5 @@ replicate(5, cDiffTest(parameters, "CDS"))
 replicate(10, decisionCDSImpliment(parameters, "NO_CDS"))
 replicate(10, decisionCDSImpliment(parameters, "CDS"))
 
-# test primary wrapper
-oneWaySensitivityAnalysis("cTrueNegative", parameters, seq(0, 10000, by=1000), 999)
+# test sensivity analysis
+oneWaySensitivityAnalysis("ctruenegative", parameters, seq(0, 10000, by=1000), 99)
