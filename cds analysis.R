@@ -1,4 +1,5 @@
 # load libraries ####
+require(yaml)
 
 # load local R files
 source("src/functions.R")
@@ -25,5 +26,3 @@ results <- lapply(
 
 names(results) <- stratificaiton
 df <- as.data.frame(results)
-
-
