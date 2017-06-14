@@ -3,13 +3,17 @@ parameters<- list(
     
   cBaseCostCDiffTx = 4000,
   
-  cFalsePositiveInflatorMin = -1500,
-  cFalsePositiveInflatorMode = -500,
-  cFalsePositiveInflatorMax = -100,
+  cFalsePositiveInf = list(
+    min = -1500,
+    mode = -500,
+    max = -100
+  ),
   
-  cFalseNegativeInflatorMin = -500,
-  cFalseNegativeInflatorMode = 250,
-  cFalseNegativeInflatorMax = 1000,
+  cFalseNegativeInf = list(
+    min = -500,
+    mode = 250,
+    max = 1000
+  ),
   
   cTrueNegative = 0,
   

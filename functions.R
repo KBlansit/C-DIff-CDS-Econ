@@ -1,7 +1,41 @@
 # load libraries ####
 require(triangle)
+require(assertthat)
 
 # functions ####
+triangleWrapper <- function(parameters) {
+  # assertions
+  stopifnot(!is.null(parameters[["min"]]))
+  stopifnot(!is.null(parameters[["max"]]))
+  stopifnot(!is.null(parameters[["mode"]]))
+  
+  # return random value
+  return(rtriangle(1, parameters$min, parameters$max, parameters$mode))
+}
+
+distributionWrapper <- function(parameters){
+  # distribution: triangle
+  # min
+  # mode
+  # max
+  #
+  # distribution: guassian
+  # mean
+  # sd
+  #
+  # distribution: point
+  # point
+  
+  # triangle
+  if(parameters$distribution == "triangle"){
+    return(triangleWrapper(parameters))
+    
+  # guassian
+  } else if(parameters$distribution == "guassian"){
+    
+  }
+}
+
 positiveTest <- function(parameters, state){
   # determine which probability to use
   
@@ -19,12 +53,8 @@ positiveTest <- function(parameters, state){
     cBaseCost <- parameters$cBaseCostCDiffTx
     
     # false negative inflator 
-    cFalsePositiveInflator <- rtriangle(1,
-      parameters$cFalsePositiveInflatorMin,
-      parameters$cFalsePositiveInflatorMax,
-      parameters$cFalsePositiveInflatorMode
-    )
-    
+    cFalsePositiveInflator <- triangleWrapper(parameters$cFalsePositiveInf)
+      
     # sum up
     totalCost <- cBaseCost + cFalsePositiveInflator
   }
@@ -43,11 +73,7 @@ negativeTest <- function(parameters){
     cBaseCost <- parameters$cBaseCostCDiffTx
     
     # false negative inflator 
-    cFalseNegativeInflator <- rtriangle(1,
-      parameters$cFalseNegativeInflatorMin,
-      parameters$cFalseNegativeInflatorMax,
-      parameters$cFalseNegativeInflatorMode
-    )
+    cFalseNegativeInflator <- triangleWrapper(parameters$cFalseNegativeInf)
     
     # sum up
     totalCost <- cBaseCost + cFalseNegativeInflator
@@ -85,4 +111,8 @@ decisionCDSImpliment <- function(parameters, state){
 
 mainFunctionWrapper <- function(state, parameters, reps){
   return(replicate(reps, decisionCDSImpliment(parameters, state)))
+}
+
+oneWaySensitivityAnalysis <- function(parameter) {
+  # to allow multiple 
 }
