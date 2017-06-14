@@ -20,3 +20,5 @@ replicate(5, cDiffTest(parameters, "CDS"))
 # test decision part
 replicate(10, decisionCDSImpliment(parameters, "NO_CDS"))
 replicate(10, decisionCDSImpliment(parameters, "CDS"))
+
+# test primary wrapper

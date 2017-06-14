@@ -7,13 +7,20 @@ source("parameters.R")
 # main function ####
 
 # set seed
-set.seed(2038)
+set.seed(2039)
 
-reps <- 10
-lapply(
-   c("NO_CDS", "CDS"),
-   replicate(reps, decisionCDSImpliment(, x)),
-   parameters = parameters
+reps <- 99999
+stratificaiton <- c("NO_CDS", "CDS")
+
+# apply function
+results <- lapply(
+  stratificaiton,
+  mainFunctionWrapper,
+  parameters = parameters,
+  reps = reps
 )
+
+names(results) <- stratificaiton
+df <- as.data.frame(results)
 
 

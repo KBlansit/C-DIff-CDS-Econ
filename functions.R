@@ -82,3 +82,7 @@ decisionCDSImpliment <- function(parameters, state){
   result <- result + cDiffTest(parameters, state)
   return(result)
 }
+
+mainFunctionWrapper <- function(state, parameters, reps){
+  return(replicate(reps, decisionCDSImpliment(parameters, state)))
+}
