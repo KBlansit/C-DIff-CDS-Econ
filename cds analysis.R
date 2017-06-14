@@ -12,7 +12,8 @@ set.seed(2038)
 reps <- 10
 lapply(
    c("NO_CDS", "CDS"),
-   replicate(reps, decisionCDSImpliment(parameters, x)),
+   replicate(reps, decisionCDSImpliment(, x)),
    parameters = parameters
 )
+
 
