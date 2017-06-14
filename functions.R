@@ -107,11 +107,11 @@ negativeTest <- function(parameters){
 }
 
 cDiffTest <- function(parameters, state){
-  if(runif(1, min=0, max=1) >= parameters$pPositiveResult){
-    result <- positiveTest(parameters, state) + parameters$cTestCost
+  if(runif(1, min=0, max=1) >= distributionWrapper(parameters$pPositiveResult)) {
+    result <- positiveTest(parameters, state) + distributionWrapper(parameters$cTestCost)
   }
   else{
-    result <- negativeTest(parameters) + parameters$cTestCost
+    result <- negativeTest(parameters) + distributionWrapper(parameters$cTestCost)
   }
   
   return(result)
@@ -123,7 +123,7 @@ decisionCDSImpliment <- function(parameters, state){
     result <- 0
   # use for CDS case
   } else if(state == "CDS"){
-    result <- parameters$cBPAImpliment
+    result <- distributionWrapper(parameters$cBPAImpliment)
   }
   result <- result + cDiffTest(parameters, state)
   return(result)

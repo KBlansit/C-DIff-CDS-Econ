@@ -2,14 +2,17 @@
 
 # load local R files
 source("functions.R")
-source("parameters.R")
 
 # main function ####
 
 # set seed
 set.seed(2039)
 
-reps <- 99999
+# load parameters
+parameters <- yaml.load_file("parameters.yaml")
+
+# initialize simulation parameters
+reps <- 20
 stratificaiton <- c("NO_CDS", "CDS")
 
 # apply function
