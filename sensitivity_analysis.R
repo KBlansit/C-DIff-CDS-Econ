@@ -20,7 +20,8 @@ prob_names = c(
   "pPositiveResult",
   "pFalsePositiveNoCDS",
   "pFalsePositiveYesCDS",
-  "pFalseNegative"
+  "pFalseNegativeNoCDS",
+  "pFalseNegativeYesCDS"
 )
 
 prob_range <- seq(0., 1., by = 0.1)

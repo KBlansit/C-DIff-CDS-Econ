@@ -30,7 +30,11 @@ pFalsePositiveYesCDS:
     distribution: "point"
     point: 0.4
 
-pFalseNegative:
+pFalseNegativeNoCDS:
+    distribution: "point"
+    point: 0.5
+    
+pFalseNegativeYesCDS:
     distribution: "point"
     point: 0.5
 

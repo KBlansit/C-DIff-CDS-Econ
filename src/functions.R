@@ -31,22 +31,32 @@ positiveTest <- function(parameters, state) {
   return(totalCost)
 }
 
-negativeTest <- function(parameters){
-  # case when false negative
-  if(runif(1, min=0, max=1) >= distributionWrapper(parameters$pFalseNegative)) {
+negativeTest <- function(parameters, state){
+  # determine which probability to use
+  
+  # use for no CDS case
+  if(state == "NO_CDS"){
+    pFalseNegative <- distributionWrapper(parameters$pFalseNegativeNoCDS)
+  # use for CDS case
+  } else if(state == "CDS"){
+    pFalseNegative <- distributionWrapper(parameters$pFalseNegativeYesCDS)
+  }
+  
+  # case when false positive
+  if(runif(1, min=0, max=1) >= pFalseNegative) {
     # base cost
     cBaseCost <- distributionWrapper(parameters$cBaseCostCDiffTx)
     
     # false negative inflator 
     cFalseNegativeInflator <- distributionWrapper(parameters$cFalseNegativeInf)
-    
+      
     # sum up
     totalCost <- cBaseCost + cFalseNegativeInflator
   }
   # case when true negative
   else{
     # base cost
-    totalCost <- distributionWrapper(parameters$cTrueNegative)
+    totalCost <- distributionWrapper(parameters$cBaseCostCDiffTx)
   }
   return(totalCost)
 }
@@ -56,7 +66,7 @@ cDiffTest <- function(parameters, state){
     result <- positiveTest(parameters, state) + distributionWrapper(parameters$cTestCost)
   }
   else{
-    result <- negativeTest(parameters) + distributionWrapper(parameters$cTestCost)
+    result <- negativeTest(parameters, state) + distributionWrapper(parameters$cTestCost)
   }
   
   return(result)

@@ -10,7 +10,8 @@ parameters <- yaml.load_file("parameters.yaml")
 # example code
 
 # test negativeTest
-replicate(5, negativeTest(parameters))
+replicate(5, negativeTest(parameters, "NO_CDS"))
+replicate(5, negativeTest(parameters, "CDS"))
 
 # test positiveTest
 replicate(5, positiveTest(parameters, "NO_CDS"))
