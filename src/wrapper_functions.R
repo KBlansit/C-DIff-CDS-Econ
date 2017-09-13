@@ -18,7 +18,7 @@ guassianWrapper <- function(parameters) {
   stopifnot(!is.null(parameters[["mean"]]))
   stopifnot(!is.null(parameters[["sd"]]))
   
-  return(rnorm(1, mean, sd))
+  return(rnorm(1, parameters$mean, parameters$sd))
 }
 
 pointWrapper <- function(parameters) {

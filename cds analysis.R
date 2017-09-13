@@ -13,7 +13,7 @@ set.seed(2039)
 parameters <- yaml.load_file("parameters.yaml")
 
 # initialize simulation parameters
-reps <- 20
+reps <- 9999
 stratificaiton <- c("NO_CDS", "CDS")
 
 # apply function

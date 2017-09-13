@@ -25,7 +25,7 @@ setParametersToPoints <- function(tmp_parameters, var_name) {
       point <- point/3
       
     # guassian
-    } else if (curr_param$distribution == "mean") {
+    } else if (curr_param$distribution == "guassian") {
       # calculate point
       point <- curr_param$mean
       
