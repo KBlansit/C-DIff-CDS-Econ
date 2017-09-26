@@ -1,6 +1,81 @@
 # load custom libraries ####
 source('src/wrapper_functions.R')
 
+
+
+# set disease result
+if(runif(1, min=0, max=1) >= pPositiveDisease) {
+    disease = "POSITIVE"
+}
+
+if (disease == "POSITIVE") {
+    cost <- distributionWrapper(parameters$cPositiveDiseaseTreatPositiveTest)
+} else {
+    
+}
+
+
+
+
+
+
+    # case when treat
+    if(test_strategy == "TREAT") {
+        # get prob
+        pPositiveDisease <- distributionWrapper(parameters$pPositiveDiseaseTreatPositiveTestCDS)
+        
+        #  determine if positive disease
+        if(runif(1, min=0, max=1) >= pFalsePositive) {
+        } else {
+            cost <- distributionWrapper(parameters$cNegativeDiseaseTreatPositiveTest)
+        }
+        
+    # case when no treat
+    } else if(test_strategy == "NO_TREAT") {
+        # get prob
+        pPositiveDisease <- distributionWrapper(parameters$pPositiveDiseaseNoTreatPositiveTestCDS)
+        
+        #  determine if positive disease
+        if(runif(1, min=0, max=1) >= pFalsePositive) {
+            cost <- distributionWrapper(parameters$cPositiveDiseaseTreatNegativeTest)
+        } else {
+            cost <- distributionWrapper(parameters$cNegativeDiseaseTreatNegativeTest)
+        }
+    }
+
+
+
+
+negativeTest <- function(parameters, state) {
+    # initialize cost
+    totalCosts <- 0
+    
+    # case when treat
+    if(state == "TREAT") {
+        # get prob
+        pPositiveDisease <- distributionWrapper(parameters$pPositiveDiseaseTreat)
+        
+        #  determine if positive disease
+        if(runif(1, min=0, max=1) >= pFalsePositive) {
+            cost <- distributionWrapper(parameters$cPositiveResultTreat)
+        }
+        
+    # case when no treat
+    } else if(state == "NO_TREAT") {
+        # get prob
+        pPositiveDisease <- distributionWrapper(parameters$pPositiveDiseaseNoTreat)
+        
+        #  determine if positive disease
+        if(runif(1, min=0, max=1) >= pFalsePositive) {
+            cost <- distributionWrapper(parameters$cPositiveResultNoTreat)
+        }
+    }
+
+    return(cost)
+}
+
+
+######
 positiveTest <- function(parameters, state) {
   # determine which probability to use
   
