@@ -6,7 +6,7 @@ import random
 
 import pandas as pd
 
-def check_cost(branch_item_dict):
+def get_new_dict(branch_item_dict):
     # get vals
     vals = list(branch_item_dict.values())
 
@@ -14,17 +14,7 @@ def check_cost(branch_item_dict):
     assert len(vals) == 1
 
     # return
-    return vals[0]['COST']
-
-def get_prob(branch_item_dict):
-    # get vals
-    vals = list(branch_item_dict.values())
-
-    # assetion
-    assert len(vals) == 1
-
-    # return
-    return vals[0]['PROB']
+    return vals[0]
 
 
 def recusrive_process(dict_head):
@@ -33,7 +23,7 @@ def recusrive_process(dict_head):
     branches = dict_head['BRANCHES']
 
     # get probs
-    prob_branches = [get_prob(x) for x in branches]
+    prob_branches = [get_new_dict(x)['PROB'] for x in branches]
 
     # assert probs add up to 1 and we only have 2 items
     assert len(branches) == 2
@@ -41,12 +31,11 @@ def recusrive_process(dict_head):
 
     # determine which to use
     if random.uniform(0, 1) >= prob_branches[0]:
-        selection = branches[0]
+        selection = get_new_dict(branches[0])
     else:
-        selection = branches[1]
+        selection = get_new_dict(branches[1])
 
-    cost = check_cost(selection)
-    if cost is None:
-        return recusrive_process(selection)
+    if hasattr(selection, 'COST'):
+        return selection['COST']
     else:
-        return cost
+        recusrive_process(selection)
