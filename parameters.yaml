@@ -1,6 +1,138 @@
 CDS:
     BRANCHES:
+    - ORDER_TEST:
+        BRANCHES:
+          - POSITIVE_RESULT:
+              PROB: 0.9
+              BRANCHES:
+                - TREAT:
+                    PROB: 0.9
+                    BRANCHES:
+                      - DISEASE_POS:
+                          COST: 100
+                          PROB: 0.9
+                      - DISEASE_NEG:
+                          COST: 200
+                          PROB: 0.1
+                - NO_TREAT:
+                    PROB: 0.1
+                    BRANCHES:
+                      - DISEASE_POS:
+                          COST: 100
+                          PROB: 0.9
+                      - DISEASE_NEG:
+                          COST: 200
+                          PROB: 0.1
+          - NEGSTIVE_RESULT:
+              PROB: 0.1
+              BRANCHES:
+                - TREAT:
+                    PROB: 0.9
+                    BRANCHES:
+                      - DISEASE_POS:
+                          COST: 100
+                          PROB: 0.9
+                      - DISEASE_NEG:
+                          COST: 200
+                          PROB: 0.1
+                - NO_TREAT:
+                    PROB: 0.1
+                    BRANCHES:
+                      - DISEASE_POS:
+                          COST: 100
+                          PROB: 0.9
+                      - DISEASE_NEG:
+                          COST: 200
+                          PROB: 0.1
+        PROB: 0.9
+    - NO_TEST:
+        PROB: 0.1
+        BRANCHES:
+          - TREAT:
+              PROB: 0.9
+              BRANCHES:
+                - DISEASE_POS:
+                    COST: 100
+                    PROB: 0.9
+                - DISEASE_NEG:
+                    COST: 200
+                    PROB: 0.1
+          - NO_TREAT:
+              PROB: 0.1
+              BRANCHES:
+                - DISEASE_POS:
+                    COST: 100
+                    PROB: 0.9
+                - DISEASE_NEG:
+                    COST: 200
+                    PROB: 0.1
     TYPE: "DECISION"
 NO_CDS:
     BRANCHES:
+    - ORDER_TEST:
+        BRANCHES:
+          - POSITIVE_RESULT:
+              PROB: 0.9
+              BRANCHES:
+                - TREAT:
+                    PROB: 0.9
+                    BRANCHES:
+                      - DISEASE_POS:
+                          COST: 100
+                          PROB: 0.9
+                      - DISEASE_NEG:
+                          COST: 200
+                          PROB: 0.1
+                - NO_TREAT:
+                    PROB: 0.1
+                    BRANCHES:
+                      - DISEASE_POS:
+                          COST: 100
+                          PROB: 0.9
+                      - DISEASE_NEG:
+                          COST: 200
+                          PROB: 0.1
+          - NEGSTIVE_RESULT:
+              PROB: 0.1
+              BRANCHES:
+                - TREAT:
+                    PROB: 0.9
+                    BRANCHES:
+                      - DISEASE_POS:
+                          COST: 100
+                          PROB: 0.9
+                      - DISEASE_NEG:
+                          COST: 200
+                          PROB: 0.1
+                - NO_TREAT:
+                    PROB: 0.1
+                    BRANCHES:
+                      - DISEASE_POS:
+                          COST: 100
+                          PROB: 0.9
+                      - DISEASE_NEG:
+                          COST: 200
+                          PROB: 0.1
+        PROB: 0.9
+    - NO_TEST:
+        PROB: 0.1
+        BRANCHES:
+          - TREAT:
+              PROB: 0.9
+              BRANCHES:
+                - DISEASE_POS:
+                    COST: 100
+                    PROB: 0.9
+                - DISEASE_NEG:
+                    COST: 200
+                    PROB: 0.1
+          - NO_TREAT:
+              PROB: 0.1
+              BRANCHES:
+                - DISEASE_POS:
+                    COST: 100
+                    PROB: 0.9
+                - DISEASE_NEG:
+                    COST: 200
+                    PROB: 0.1
     TYPE: "DECISION"
