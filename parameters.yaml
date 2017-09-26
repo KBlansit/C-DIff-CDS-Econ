@@ -1,50 +1,6 @@
-cBaseCostCDiffTx:
-    distribution: "guassian"
-    mean: 4000
-    sd: 200
-
-cFalsePositiveInf:
-    distribution: "triangle"
-    min: -1500
-    mode: -500
-    max: -100
-
-cFalseNegativeInf:
-    distribution: "triangle"
-    min: -500
-    mode: -250
-    max: 1000
-
-cTrueNegative:
-    distribution: "point"
-    point: 0
-
-# change to reflect CDS/NoCDS
-pPositiveResult:
-    distribution: "point"
-    point: 0.16
-
-pFalsePositiveNoCDS:
-    distribution: "point"
-    point: 0.187
-
-pFalsePositiveYesCDS:
-    distribution: "point"
-    point: 0.209
-
-pFalseNegativeNoCDS:
-    distribution: "point"
-    point: 0.020
-    
-pFalseNegativeYesCDS:
-    distribution: "point"
-    point: 0.017
-
-cTestCost:
-    distribution: "guassian"
-    mean: 400
-    sd: 50
-
-cBPAImpliment:
-    distribution: "point"
-    point: 3
+CDS:
+    BRANCHES:
+    TYPE: "DECISION"
+NO_CDS:
+    BRANCHES:
+    TYPE: "DECISION"
