@@ -6,6 +6,8 @@ import random
 
 import pandas as pd
 
+# functions
+
 def get_new_dict(branch_item_dict):
     # get vals
     vals = list(branch_item_dict.values())
@@ -15,7 +17,6 @@ def get_new_dict(branch_item_dict):
 
     # return
     return vals[0]
-
 
 def recusrive_process(dict_head):
 
@@ -35,7 +36,17 @@ def recusrive_process(dict_head):
     else:
         selection = get_new_dict(branches[1])
 
+    # return final cost if we can, otherwise return recusrive_process
     if hasattr(selection, 'COST'):
         return selection['COST']
     else:
         recusrive_process(selection)
+
+# primary function
+def main():
+    # set random
+    random.seed(24258046)
+
+    # read in data
+    with open("parameters.yaml") as f:
+    model = yaml.load(f)
