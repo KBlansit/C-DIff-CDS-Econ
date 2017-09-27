@@ -1,69 +1,211 @@
 CDS:
     BRANCHES:
     - ORDER_TEST:
+        PROB: 0.56
         BRANCHES:
           - POSITIVE_RESULT:
-              PROB: 0.9
+              PROB: 0.14
               BRANCHES:
                 - TREAT:
-                    PROB: 0.9
+                    PROB: 0.95
                     BRANCHES:
                       - DISEASE_POS:
-                          COST: 100
-                          PROB: 0.9
+                          PROB: 0.85
+                          COST:
+                              LOW: 2200 #
+                              MODE: 4200 #
+                              HIGH: 8200 #
                       - DISEASE_NEG:
-                          COST: 200
-                          PROB: 0.1
+                          PROB: 0.15
+                          COST:
+                              LOW: 1700
+                              MODE: 3700
+                              HIGH: 7200
                 - NO_TREAT:
-                    PROB: 0.1
+                    PROB: 0.05
                     BRANCHES:
                       - DISEASE_POS:
-                          COST: 100
-                          PROB: 0.9
+                          PROB: 0.85
+                          COST:
+                              LOW: 200 #
+                              MODE: 450 #
+                              HIGH: 1200
                       - DISEASE_NEG:
-                          COST: 200
-                          PROB: 0.1
+                          PROB: 0.15
+                          COST:
+                              LOW: 200
+                              MODE: 200
+                              HIGH: 200
           - NEGSTIVE_RESULT:
-              PROB: 0.1
+              PROB: 0.86
               BRANCHES:
                 - TREAT:
-                    PROB: 0.9
+                    PROB: 0.05
                     BRANCHES:
                       - DISEASE_POS:
-                          COST: 100
-                          PROB: 0.9
+                          PROB: 0.02
+                          COST:
+                              LOW: 2200
+                              MODE: 4200
+                              HIGH: 8200
                       - DISEASE_NEG:
-                          COST: 200
-                          PROB: 0.1
+                          PROB: 0.98
+                          COST:
+                              LOW: 1700
+                              MODE: 3700
+                              HIGH: 7200
                 - NO_TREAT:
-                    PROB: 0.1
+                    PROB: 0.95
                     BRANCHES:
                       - DISEASE_POS:
-                          COST: 100
-                          PROB: 0.9
+                          PROB: 0.02
+                          COST:
+                              LOW: 200
+                              MODE: 450
+                              HIGH: 1200
                       - DISEASE_NEG:
-                          COST: 200
-                          PROB: 0.1
-        PROB: 0.9
+                          PROB: 0.98
+                          COST:
+                              LOW: 200
+                              MODE: 200
+                              HIGH: 200
     - NO_TEST:
-        PROB: 0.1
+        PROB: 0.44
         BRANCHES:
           - TREAT:
-              PROB: 0.9
+              PROB: 0.02
               BRANCHES:
                 - DISEASE_POS:
-                    COST: 100
-                    PROB: 0.9
+                    PROB: 0.07
+                    COST:
+                        LOW: 2000
+                        MODE: 4000
+                        HIGH: 8000
                 - DISEASE_NEG:
-                    COST: 200
-                    PROB: 0.1
+                    PROB: 0.93
+                    COST:
+                        LOW: 1500
+                        MODE: 3500
+                        HIGH: 7000
           - NO_TREAT:
-              PROB: 0.1
+              PROB: 0.98
               BRANCHES:
                 - DISEASE_POS:
-                    COST: 100
-                    PROB: 0.9
+                    PROB: 0.07
+                    COST:
+                        LOW: 0
+                        MODE: 250
+                        HIGH: 1000
                 - DISEASE_NEG:
-                    COST: 200
-                    PROB: 0.1
+                    PROB: 0.93
+                    COST:
+                        LOW: 0
+                        MODE: 0
+                        HIGH: 0
+    TYPE: "DECISION"
+
+NO_CDS:
+    BRANCHES:
+    - ORDER_TEST:
+        PROB: 0.90
+        BRANCHES:
+          - POSITIVE_RESULT:
+              PROB: 0.13
+              BRANCHES:
+                - TREAT:
+                    PROB: 0.95
+                    BRANCHES:
+                      - DISEASE_POS:
+                          PROB: 0.85
+                          COST:
+                              LOW: 2200 #
+                              MODE: 4200 #
+                              HIGH: 8200 #
+                      - DISEASE_NEG:
+                          PROB: 0.15
+                          COST:
+                              LOW: 1700
+                              MODE: 3700
+                              HIGH: 7200
+                - NO_TREAT:
+                    PROB: 0.05
+                    BRANCHES:
+                      - DISEASE_POS:
+                          PROB: 0.85
+                          COST:
+                              LOW: 200 #
+                              MODE: 450 #
+                              HIGH: 1200
+                      - DISEASE_NEG:
+                          PROB: 0.15
+                          COST:
+                              LOW: 200
+                              MODE: 200
+                              HIGH: 200
+          - NEGSTIVE_RESULT:
+              PROB: 0.87
+              BRANCHES:
+                - TREAT:
+                    PROB: 0.05
+                    BRANCHES:
+                      - DISEASE_POS:
+                          PROB: 0.02
+                          COST:
+                              LOW: 2200
+                              MODE: 4200
+                              HIGH: 8200
+                      - DISEASE_NEG:
+                          PROB: 0.98
+                          COST:
+                              LOW: 1700
+                              MODE: 3700
+                              HIGH: 7200
+                - NO_TREAT:
+                    PROB: 0.95
+                    BRANCHES:
+                      - DISEASE_POS:
+                          PROB: 0.02
+                          COST:
+                              LOW: 200
+                              MODE: 450
+                              HIGH: 1200
+                      - DISEASE_NEG:
+                          PROB: 0.98
+                          COST:
+                              LOW: 200
+                              MODE: 200
+                              HIGH: 200
+    - NO_TEST:
+        PROB: 0.10
+        BRANCHES:
+          - TREAT:
+              PROB: 0.02
+              BRANCHES:
+                - DISEASE_POS:
+                    PROB: 0.07
+                    COST:
+                        LOW: 2000
+                        MODE: 4000
+                        HIGH: 8000
+                - DISEASE_NEG:
+                    PROB: 0.93
+                    COST:
+                        LOW: 1500
+                        MODE: 3500
+                        HIGH: 7000
+          - NO_TREAT:
+              PROB: 0.98
+              BRANCHES:
+                - DISEASE_POS:
+                    PROB: 0.07
+                    COST:
+                        LOW: 0
+                        MODE: 250
+                        HIGH: 1000
+                - DISEASE_NEG:
+                    PROB: 0.93
+                    COST:
+                        LOW: 0
+                        MODE: 0
+                        HIGH: 0
     TYPE: "DECISION"
