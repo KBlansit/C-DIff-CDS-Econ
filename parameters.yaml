@@ -33,9 +33,9 @@ CDS:
                       - DISEASE_NEG:
                           PROB: 0.15
                           COST:
-                              LOW: 200
-                              MODE: 200
-                              HIGH: 200
+                              LOW: 200.001
+                              MODE: 200.002
+                              HIGH: 200.003
           - NEGSTIVE_RESULT:
               PROB: 0.86
               BRANCHES:
@@ -66,9 +66,9 @@ CDS:
                       - DISEASE_NEG:
                           PROB: 0.98
                           COST:
-                              LOW: 200
-                              MODE: 200
-                              HIGH: 200
+                              LOW: 200.001
+                              MODE: 200.002
+                              HIGH: 200.003
     - NO_TEST:
         PROB: 0.44
         BRANCHES:
@@ -99,9 +99,9 @@ CDS:
                 - DISEASE_NEG:
                     PROB: 0.93
                     COST:
-                        LOW: 0
-                        MODE: 0
-                        HIGH: 0
+                        LOW: 0.001
+                        MODE: 0.002
+                        HIGH: 0.003
     TYPE: "DECISION"
 
 NO_CDS:
@@ -133,8 +133,8 @@ NO_CDS:
                       - DISEASE_POS:
                           PROB: 0.85
                           COST:
-                              LOW: 200 #
-                              MODE: 450 #
+                              LOW: 200
+                              MODE: 450
                               HIGH: 1200
                       - DISEASE_NEG:
                           PROB: 0.15
