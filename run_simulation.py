@@ -46,7 +46,7 @@ def recusrive_process(dict_head):
         else:
             selection = get_new_dict(branches[1])
 
-        recusrive_process(selection)
+        return recusrive_process(selection)
 
         # return final cost if we can, otherwise return recusrive_process
     elif 'COST' in dict_head:
@@ -67,20 +67,23 @@ def main():
     # make top level sims
     model_lst = [model['CDS']] * NUMB_SIMS + [model['NO_CDS']] * NUMB_SIMS
 
-    for i in model_lst:
-        recusrive_process(i)
     # make multiprocessing pool
     p = Pool()
 
     # map function
-    storage = p.map(recusrive_process, model_lst)
+    costs = p.map(recusrive_process, model_lst)
 
     # clean up
     p.close()
     p.join()
 
+    label_lst = ['CDS'] * NUMB_SIMS + ['NO_CDS'] * NUMB_SIMS
+
     # pass to dataframe
-    pd.DataFrame({'decision', 'cost'})
+    df = pd.DataFrame({'decision': label_lst, 'cost': costs})
+
+    import pdb; pdb.set_trace()
+
 if __name__ == '__main__':
     main()
 
