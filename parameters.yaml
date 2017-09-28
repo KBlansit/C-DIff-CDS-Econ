@@ -173,7 +173,7 @@ NO_CDS:
                           PROB: 0.98
                           COST:
                               LOW: 200.001
-                              MODE: 2000.002
+                              MODE: 200.002
                               HIGH: 200.003
     - NO_TEST:
         PROB: 0.10
