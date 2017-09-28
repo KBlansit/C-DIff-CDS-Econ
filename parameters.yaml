@@ -45,9 +45,9 @@ CDS:
                       - DISEASE_POS:
                           PROB: 0.02
                           COST:
-                              LOW: 2200
-                              MODE: 4200
-                              HIGH: 8200
+                              LOW: 3200
+                              MODE: 5200
+                              HIGH: 9200
                       - DISEASE_NEG:
                           PROB: 0.98
                           COST:
@@ -60,9 +60,9 @@ CDS:
                       - DISEASE_POS:
                           PROB: 0.02
                           COST:
-                              LOW: 200
-                              MODE: 450
-                              HIGH: 1200
+                              LOW: 500
+                              MODE: 950
+                              HIGH: 1700
                       - DISEASE_NEG:
                           PROB: 0.98
                           COST:
