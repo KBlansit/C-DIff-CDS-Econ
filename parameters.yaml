@@ -118,9 +118,9 @@ NO_CDS:
                       - DISEASE_POS:
                           PROB: 0.85
                           COST:
-                              LOW: 2200 #
-                              MODE: 4200 #
-                              HIGH: 8200 #
+                              LOW: 3200
+                              MODE: 5200
+                              HIGH: 9200
                       - DISEASE_NEG:
                           PROB: 0.15
                           COST:
@@ -133,15 +133,15 @@ NO_CDS:
                       - DISEASE_POS:
                           PROB: 0.85
                           COST:
-                              LOW: 200
-                              MODE: 450
-                              HIGH: 1200
+                              LOW: 500
+                              MODE: 950
+                              HIGH: 1700
                       - DISEASE_NEG:
                           PROB: 0.15
                           COST:
-                              LOW: 200
-                              MODE: 200
-                              HIGH: 200
+                              LOW: 200.001
+                              MODE: 200.002
+                              HIGH: 200.003
           - NEGSTIVE_RESULT:
               PROB: 0.87
               BRANCHES:
@@ -172,9 +172,9 @@ NO_CDS:
                       - DISEASE_NEG:
                           PROB: 0.98
                           COST:
-                              LOW: 200
-                              MODE: 200
-                              HIGH: 200
+                              LOW: 200.001
+                              MODE: 2000.002
+                              HIGH: 200.003
     - NO_TEST:
         PROB: 0.10
         BRANCHES:
@@ -205,7 +205,7 @@ NO_CDS:
                 - DISEASE_NEG:
                     PROB: 0.93
                     COST:
-                        LOW: 0
-                        MODE: 0
-                        HIGH: 0
+                        LOW: 0.001
+                        MODE: 0.002
+                        HIGH: 0.003
     TYPE: "DECISION"
